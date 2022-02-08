@@ -1,4 +1,4 @@
-﻿namespace gastro_pimp.Commands
+﻿namespace GastroPimp.Commands
 {
     public enum CommandType
     {

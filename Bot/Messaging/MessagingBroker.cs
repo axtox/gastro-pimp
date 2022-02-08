@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types.ReplyMarkups;
 
-namespace gastro_pimp.Messaging
+namespace GastroPimp.Messaging
 {
     public class MessagingBroker
     {

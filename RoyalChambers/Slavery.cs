@@ -1,10 +1,10 @@
-﻿using gastro_pimp.Messaging;
+﻿using GastroPimp.Messaging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Telegram.Bot.Types;
 
-namespace gastro_pimp
+namespace GastroPimp
 {
     public class Slavery
     {

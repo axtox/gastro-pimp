@@ -1,5 +1,5 @@
-﻿using gastro_pimp.Commands;
-using gastro_pimp.Messaging;
+﻿using GastroPimp.Commands;
+using GastroPimp.Messaging;
 using System;
 using System.Linq;
 using System.Threading;
@@ -9,7 +9,7 @@ using Telegram.Bot.Extensions.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
-namespace gastro_pimp
+namespace GastroPimp
 {
     class Program
     {

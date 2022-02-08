@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31321.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gastro-pimp", "gastro-pimp.csproj", "{F5F1073C-8453-43A6-B862-320F235C0825}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GastroPimp", "GastroPimp.csproj", "{F5F1073C-8453-43A6-B862-320F235C0825}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "friends-challange", "..\friends-challange\friends-challange.csproj", "{4501A56D-B711-43F1-9DE2-3B747FAACB15}"
 EndProject

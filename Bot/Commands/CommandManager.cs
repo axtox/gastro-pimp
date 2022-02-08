@@ -2,7 +2,7 @@
 using System.Linq;
 using Telegram.Bot.Types;
 
-namespace gastro_pimp.Commands
+namespace GastroPimp.Commands
 {
     public class CommandManager
     {
