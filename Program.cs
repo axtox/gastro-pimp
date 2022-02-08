@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using gastro_pimp.Commands;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Telegram.Bot;
-using Telegram.Bot.Exceptions;
 using Telegram.Bot.Extensions.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
-using Telegram.Bot.Types.InlineQueryResults;
-using Telegram.Bot.Types.ReplyMarkups;
 
 namespace gastro_pimp
 {
@@ -29,7 +26,7 @@ namespace gastro_pimp
             );
 
             _messagingBroker = new MessagingBroker(_botClient);
-            _commandManager = new CommandManager(_messagingBroker);
+            _commandManager = new CommandManager();
             _slavery = new Slavery(_messagingBroker);
 
             using var cts = new CancellationTokenSource();
@@ -74,19 +71,19 @@ namespace gastro_pimp
             var command = _commandManager.ProcessCommand(update.Message);
             switch (command.Name)
             {
-                case CommandManager.Commands.done:
+                case CommandType.done:
                     await _slavery.RetireSlave(update.Message, command.AttachedMessage);
                     break;
-                case CommandManager.Commands.jrat:
+                case CommandType.jrat:
                     await _slavery.QueenWantsSomeFood(command.AttachedMessage, update.Message.From.Id, chatId);
                     break;
-                case CommandManager.Commands.money:
+                case CommandType.money:
                     if (int.TryParse(command.AttachedMessage, out var reduceBy))
                         await _slavery.ShowHowMuchMoneyLeft(chatId, reduceBy);
                     else
                         await _slavery.ShowHowMuchMoneyLeft(chatId);
                     break;
-                case CommandManager.Commands.start:
+                case CommandType.start:
                     await _messagingBroker.SendInstructions(chatId);
                     break;
             }
