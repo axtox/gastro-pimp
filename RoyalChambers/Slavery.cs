@@ -60,7 +60,7 @@ namespace GastroPimp
                 return;
             }
 
-            if (_moneyBank.GetCurrentAmount() <= 0)
+            if (!_moneyBank.StillHaveSomeMoney())
             {
                 await _messagingBroker.SendMessage($"все, деняк нет.", callback.From.Id);
                 return;
@@ -106,6 +106,15 @@ namespace GastroPimp
             _currentOrder = null;
 
             await _messagingBroker.SendDoneMessage(_moneyBank.GetCurrentAmount());
+
+
+            if (!_moneyBank.StillHaveSomeMoney())
+            {
+                await _messagingBroker.SendAngryNotificationToTheGroup($"{_moneyBank.GetCurrentAmount()}р ахаха бля ну и что ты теперь на это купишь, можешь заказать жвачку, " +
+                    $"хотя на доставку уже не хватит. Добро пожаловать в ряды холопов, дорогая, " +
+                    $"будь на чеку, кто-то более важный в любой момент может проголодаться. Кстати, хопоская вонь тебе к лицу))");
+                return;
+            }
         }
 
         public async Task QueenWantsSomeFood(string herMajestyMessage, long herMajestyId, long chatId)
@@ -121,9 +130,11 @@ namespace GastroPimp
                 return;
             }
 
-            if (_moneyBank.GetCurrentAmount() <= 0)
+            if (!_moneyBank.StillHaveSomeMoney())
             {
-                await _messagingBroker.SendMessage($"Госпожа, у вас кончились деньги, теперь вы холоп как мы. Ваш баланс {_moneyBank.GetCurrentAmount()}р, это в тенге будет {MoneyBank.RubleToTenge(_moneyBank.GetCurrentAmount())}", chatId);
+                await _messagingBroker.SendMessage($"Хе, кончились деньги, теперь ты холоп как мы, ретард)) твои гроши " +
+                    $"- {_moneyBank.GetCurrentAmount()}р " +
+                    $"ахахах все пиздуй бараздуй и я пошел.", chatId);
                 return;
             }
 

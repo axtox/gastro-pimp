@@ -5,6 +5,7 @@ namespace GastroPimp
 {
     public class MoneyBank
     {
+        private const int MinimalAmountOfMoney = 100;
         private int _currentAmount;
 
         public MoneyBank(int startAmount)
@@ -41,6 +42,11 @@ namespace GastroPimp
         public static int RubleToTenge(int rubles)
         {
             return (int)(rubles * 6.03);
+        }
+
+        public bool StillHaveSomeMoney()
+        {
+            return _currentAmount > MinimalAmountOfMoney;
         }
     }
 }
