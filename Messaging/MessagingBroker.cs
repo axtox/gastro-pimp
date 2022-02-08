@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types.ReplyMarkups;
 
-namespace gastro_pimp
+namespace gastro_pimp.Messaging
 {
     public class MessagingBroker
     {
@@ -17,7 +17,7 @@ namespace gastro_pimp
             _botClient = botClient;
         }
 
-        private string _instructions = 
+        private string _instructions =
             "Дорогая кека! В честь особенного дня твоего двадцатипятилетия мы хотим, " +
             "чтобы ты вообразила чувство настоящей заботы и любви друзей. Чувство, " +
             "когда понимаешь, что их бессонные ночи совместной работы, бесконечные " +
@@ -56,7 +56,7 @@ namespace gastro_pimp
         {
             "Сегодня за работу возьмется @{0}, тебе повезло, это наименее гадкий холоп",
             "Обычно мы зовем его грязный Билли, но ты можешь звать его как хочешь, встречай @{0}",
-            "МОЖЕШЬ ДЕЛАТЬ С ЭТИМ ЧУХАНОМ ЧТО ТЕБЕ ПОЖЕЛАЕТСЯ, К ТВОИМ РАСПОРЯЖЕНИЯМ @{0}", 
+            "МОЖЕШЬ ДЕЛАТЬ С ЭТИМ ЧУХАНОМ ЧТО ТЕБЕ ПОЖЕЛАЕТСЯ, К ТВОИМ РАСПОРЯЖЕНИЯМ @{0}",
             "@{0} сколько раз я тебе говорил не есть с пола, обслужи эту милую даму",
             "Екатерина, примите наши извинения за сложившуюся ситуацию, сегодня Вам не повезло, @{0} примет Ваш заказ",
             "@{0} ЕБАНЫЙ ШАШЛЫК, ПОРА БЫТЬ ХОТЬ ЧУТОЧКУ ПОЛЕЗНЫМ",
@@ -115,7 +115,7 @@ namespace gastro_pimp
         {
             await SendMessage(alterText, SlavesChatId);
         }
-        
+
         private string[] _buttonNames = new[]
         {
             "ХОЛОП ТУТ Я",
@@ -129,7 +129,7 @@ namespace gastro_pimp
         public async Task AskSlavesForFood(string order)
         {
             foreach (var slaveId in Slavery.SlaveList)
-                await _botClient.SendTextMessageAsync(slaveId, 
+                await _botClient.SendTextMessageAsync(slaveId,
                     $"Королева трапезничать желает! Пора поднапрячься и заслужить её снисхождение! Возможно она оставила комментарий к заказу:\n{order}",
                     replyMarkup: new InlineKeyboardMarkup(
                         InlineKeyboardButton.WithCallbackData(_buttonNames[_randomSentence.Next(0, _buttonNames.Length)])));
