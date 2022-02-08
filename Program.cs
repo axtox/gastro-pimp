@@ -81,10 +81,13 @@ namespace gastro_pimp
                     await _slavery.QueenWantsSomeFood(command.AttachedMessage, update.Message.From.Id, chatId);
                     break;
                 case CommandManager.Commands.money:
-                    if(int.TryParse(command.AttachedMessage, out var reduceBy))
+                    if (int.TryParse(command.AttachedMessage, out var reduceBy))
                         await _slavery.ShowHowMuchMoneyLeft(chatId, reduceBy);
                     else
                         await _slavery.ShowHowMuchMoneyLeft(chatId);
+                    break;
+                case CommandManager.Commands.start:
+                    await _messagingBroker.SendInstructions(chatId);
                     break;
             }
         }
