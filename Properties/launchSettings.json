@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "gastro-pimp": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
