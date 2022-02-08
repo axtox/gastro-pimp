@@ -5,16 +5,16 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["gastro-pimp.csproj", "."]
-RUN dotnet restore "./gastro-pimp.csproj"
+COPY ["GastroPimp.csproj", "."]
+RUN dotnet restore "./GastroPimp.csproj"
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "gastro-pimp.csproj" -c Release -o /app/build
+RUN dotnet build "GastroPimp.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "gastro-pimp.csproj" -c Release -o /app/publish
+RUN dotnet publish "GastroPimp.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "gastro-pimp.dll"]
+ENTRYPOINT ["dotnet", "GastroPimp.dll"]
