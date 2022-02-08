@@ -25,10 +25,7 @@ namespace gastro_pimp
             //mashka
             109681764,
             //nastya
-            106491927,
-            //agni
-            518237546
-
+            106491927
         };
 
         public static User CurrentSlave;
