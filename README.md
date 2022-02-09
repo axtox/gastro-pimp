@@ -10,4 +10,4 @@ them with gentliest possble way. The budged is hardcoded as well and the amount 
 * /money - print out money count and change it if needed
 
 ## Credits
-Co-author and creative text writer - [Daniil](https://github.com/shtranin) 
+Co-author and creative text writer - [@shtranin](https://github.com/shtranin) 
